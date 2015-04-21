@@ -15,13 +15,15 @@ public class GraficoIUGM extends JFrame implements ActionListener
 {
 	private JMenuBar  mbGrafico;
 	private JMenu     menuFiguras;
-	private JMenuItem miRectangulo, miCrearFigura, miSalir;
+	private JMenuItem miRectangulo;
+	private JMenuItem miCrearFigura;
+	private JMenuItem miSalir;
 	
 	private JPanel panel1,panel;
 	private GraficoDP panelGrafico[];
 	private int n, i; 
 		
-
+	//A VER SI SIRVE
 	
     public GraficoIUGM()
     {
