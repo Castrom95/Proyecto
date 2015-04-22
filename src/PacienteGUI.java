@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,8 +21,8 @@ public class PacienteGUI extends JFrame implements ActionListener
 	private JTextField tfName, tfID, tfTime;
 	private JTextArea taLog;
 	
-	private JTextField tfCiclo, tfUnits, tfDose, tfInterval, tfPattern, tfNew, tfNewTime;
-	private JCheckBox cbChange;
+	private JTextField tfCiclo, tfUnits, tfDose, tfInterval, tfPattern, tfNew, tfNewTime, tfChange;
+	
 	
 	public PacienteGUI()
 	{
@@ -47,18 +46,18 @@ public class PacienteGUI extends JFrame implements ActionListener
     	tfPattern		= new JTextField(5);
     	tfNew			= new JTextField(5);
     	tfNewTime		= new JTextField(5);
-    	cbChange		= new JCheckBox();
+    	tfChange		= new JTextField(5);
     	
     	bStart.addActionListener(this);
     	
     	panel1.setLayout(new BorderLayout(5,5));
-		panel2.setLayout(new GridLayout(4,1));
+		panel2.setLayout(new GridLayout(5,1));
 		panel3.setLayout(new GridLayout(1,1));
 		panel4.setLayout(new GridLayout(1,1));
 		panel5.setLayout(new GridLayout(1,1));
 		panel6.setLayout(new GridLayout(3,1));
 		
-		pConcentracion.setLayout(new GridLayout(7,2));
+		pConcentracion.setLayout(new GridLayout(8,2));
 		
 		TitledBorder title;
 		title = BorderFactory.createTitledBorder("Chair #" );
@@ -67,11 +66,10 @@ public class PacienteGUI extends JFrame implements ActionListener
     	panel2.add(tfName);
     	panel2.add(new JLabel("ID"));
     	panel2.add(tfID);
+    	panel2.add(bStart);
     	
     	panel4.add(taLog);
     	
-    	
-    	panel6.add(bStart);
     	panel6.add(tfTime);
 		panel6.add(new JLabel("Timer"));
 		
@@ -82,13 +80,15 @@ public class PacienteGUI extends JFrame implements ActionListener
 		pConcentracion.add(new JLabel("Dose mUnits/kg "));
 		pConcentracion.add(tfDose);
 		pConcentracion.add(new JLabel("Interval "));
+		pConcentracion.add(tfInterval);
+		pConcentracion.add(new JLabel("Patern "));
 		pConcentracion.add(tfPattern);
-		pConcentracion.add(new JLabel("Change in mUnits/kg "));
-		pConcentracion.add(cbChange);
+		pConcentracion.add(new JLabel("Change "));
+		pConcentracion.add(tfChange);
 		pConcentracion.add(new JLabel("New "));
-		pConcentracion.add(tfCiclo);
+		pConcentracion.add(tfNew);
 		pConcentracion.add(new JLabel("Time "));
-		pConcentracion.add(tfCiclo);
+		pConcentracion.add(tfNewTime);
     	
     	panel1.add(panel2,BorderLayout.WEST);
     	panel1.add(panel4,BorderLayout.CENTER);
