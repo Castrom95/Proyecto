@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 
-public class PacienteGUI extends JFrame implements ActionListener
+public class PacienteGUI extends JPanel implements ActionListener
 {
 	private JPanel panel1, panel2, panel3, panel4, panel5, panel6, pConcentracion;
 	private JButton bStart;
@@ -26,6 +26,8 @@ public class PacienteGUI extends JFrame implements ActionListener
 	
 	public PacienteGUI()
 	{
+		setLayout(new BorderLayout());
+		
 		bStart 		= new JButton("Start");
     	tfName		= new JTextField(10);
     	tfID		= new JTextField(7);
@@ -99,7 +101,7 @@ public class PacienteGUI extends JFrame implements ActionListener
     	panel1.setBorder(title);
     	panel1.setPreferredSize(new Dimension(400,170));
     	
-    	add(panel1);
+    	add(panel1, BorderLayout.CENTER);
 		setSize(400,150);
 		setVisible(true);
     	
@@ -112,10 +114,7 @@ public class PacienteGUI extends JFrame implements ActionListener
 		
 	}
 	
-	public static void main(String[] args)
-	{
-		new PacienteGUI();
-	}
+
 
 
 	

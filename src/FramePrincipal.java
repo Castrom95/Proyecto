@@ -6,28 +6,35 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
+import Mundo.Hospital;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 
-public class GraficoIUGM extends JFrame implements ActionListener
+public class FramePrincipal extends JFrame implements ActionListener
 {
+	
+	private Hospital hospital;
+	private PanelBotones panelBotones;
+	private PanelSillas panelSillas;
+	
 	private JMenuBar  mbGrafico;
 	private JMenu     menuFiguras;
 	private JMenuItem miRectangulo;
 	private JMenuItem miCrearFigura;
 	private JMenuItem miSalir;
 	
-	private JPanel panel1,panel;
-	private GraficoDP panelGrafico[];
-	private int n, i; 
+	
 		
 	//A VER SI SIRVE
 	
-    public GraficoIUGM()
+    public FramePrincipal()
     {
         super("TRINA");
+        setLayout(new BorderLayout());
         
         // 1. Crear o Inicializar atributos
         mbGrafico     = new JMenuBar();
@@ -57,36 +64,30 @@ public class GraficoIUGM extends JFrame implements ActionListener
         setSize(1300,720);
         setVisible(true);
         
+        panelSillas = new PanelSillas(this, 2);
+    	add(panelSillas, BorderLayout.NORTH);
         
+        panelBotones = new PanelBotones(this);
+        add(panelBotones, BorderLayout.SOUTH);
         
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     }
    
-  	private void crearArregloGraficos(int c)
-	{
-		// 1. Crear los panels de las matrices con los layers correspondientes
-		if(panel1!=null) // && panel!=null)
-		{
-			//panel.setVisible(false);
-			panel1.setVisible(false);
-		}
-		
-		i=0;
-		
-		panel1 = new JPanel();
-		//panel  = new JPanel();
-		
-		//panel1.setLayout(new GridLayout(c,2));
-		panel1.setLayout(new FlowLayout());
-		
-		// 2. Crear matriz de graficos
-		panelGrafico = new GraficoDP[c];		
-	}
+    public void crearPanelesPaciente(int numero)
+    {
+    	System.out.println("entra acrear");
+    	panelSillas = new PanelSillas(this, numero);
+    	add(panelSillas, BorderLayout.NORTH);
+    	repaint();
+    }
+    
+ 
 
 	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource() == miCrearFigura)
 		{
+			int n = 0;
 			try
 			{
 				n = Integer.parseInt(JOptionPane.showInputDialog("TOTAL NUMBER OF CHAIRS "));
@@ -95,31 +96,15 @@ public class GraficoIUGM extends JFrame implements ActionListener
 			{
 				JOptionPane.showMessageDialog(null,"NO NUMBER WAS ENTERED");
 			}
-			
-			crearArregloGraficos(n);
-			
-			
-        	mbGrafico.add(new JLabel("                                     TOTAL NUMBER OF CHAIRS: " + n));
-			miCrearFigura.setEnabled(false);
-			
-			for(i=0;i<n;i++)
-			{
-				panelGrafico[i]= new GraficoDP(i);
-				panel1.add(panelGrafico[i]);
-				panel1.setVisible(true);
-				add(panel1);
-				setVisible(true);
-			}
-        	
-        	
-		}
-			
-		if(e.getSource() == miSalir)
+			crearPanelesPaciente(n);        	
+		}			
+		else if(e.getSource() == miSalir)
 			System.exit(0);
 	}
    
     public static void main(String args[])
     {
-        GraficoIUGM objeto = new GraficoIUGM();
+        FramePrincipal id = new FramePrincipal(  );
+        id.setVisible( true );
     }
 }
