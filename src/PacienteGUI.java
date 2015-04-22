@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,10 +17,13 @@ import javax.swing.border.TitledBorder;
 
 public class PacienteGUI extends JFrame implements ActionListener
 {
-	private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
+	private JPanel panel1, panel2, panel3, panel4, panel5, panel6, pConcentracion;
 	private JButton bStart;
 	private JTextField tfName, tfID, tfTime;
 	private JTextArea taLog;
+	
+	private JTextField tfCiclo, tfUnits, tfDose, tfInterval, tfPattern, tfNew, tfNewTime;
+	private JCheckBox cbChange;
 	
 	public PacienteGUI()
 	{
@@ -35,6 +39,16 @@ public class PacienteGUI extends JFrame implements ActionListener
     	panel6		= new JPanel();
     	taLog		= new JTextArea();
     	
+    	pConcentracion 	= new JPanel();
+    	tfCiclo			= new JTextField(5);
+    	tfUnits			= new JTextField(5);
+    	tfDose			= new JTextField(5);
+    	tfInterval		= new JTextField(5);
+    	tfPattern		= new JTextField(5);
+    	tfNew			= new JTextField(5);
+    	tfNewTime		= new JTextField(5);
+    	cbChange		= new JCheckBox();
+    	
     	bStart.addActionListener(this);
     	
     	panel1.setLayout(new BorderLayout(5,5));
@@ -43,6 +57,8 @@ public class PacienteGUI extends JFrame implements ActionListener
 		panel4.setLayout(new GridLayout(1,1));
 		panel5.setLayout(new GridLayout(1,1));
 		panel6.setLayout(new GridLayout(3,1));
+		
+		pConcentracion.setLayout(new GridLayout(7,2));
 		
 		TitledBorder title;
 		title = BorderFactory.createTitledBorder("Chair #" );
@@ -58,10 +74,27 @@ public class PacienteGUI extends JFrame implements ActionListener
     	panel6.add(bStart);
     	panel6.add(tfTime);
 		panel6.add(new JLabel("Timer"));
+		
+		pConcentracion.add(new JLabel("Concentration # "));
+		pConcentracion.add(tfCiclo);
+		pConcentracion.add(new JLabel("Units/mL "));
+		pConcentracion.add(tfUnits);
+		pConcentracion.add(new JLabel("Dose mUnits/kg "));
+		pConcentracion.add(tfDose);
+		pConcentracion.add(new JLabel("Interval "));
+		pConcentracion.add(tfPattern);
+		pConcentracion.add(new JLabel("Change in mUnits/kg "));
+		pConcentracion.add(cbChange);
+		pConcentracion.add(new JLabel("New "));
+		pConcentracion.add(tfCiclo);
+		pConcentracion.add(new JLabel("Time "));
+		pConcentracion.add(tfCiclo);
     	
     	panel1.add(panel2,BorderLayout.WEST);
     	panel1.add(panel4,BorderLayout.CENTER);
-    	panel1.add(panel6,BorderLayout.EAST);
+    	panel1.add(panel6,BorderLayout.CENTER);
+    	panel1.add(pConcentracion, BorderLayout.EAST);
+    	
     	
     	panel1.setBorder(title);
     	panel1.setPreferredSize(new Dimension(400,170));
@@ -79,7 +112,7 @@ public class PacienteGUI extends JFrame implements ActionListener
 		
 	}
 	
-	private static void main(String[] args)
+	public static void main(String[] args)
 	{
 		new PacienteGUI();
 	}
