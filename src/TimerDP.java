@@ -8,7 +8,7 @@ class MyTimerTask extends TimerTask
 
   public void run() 
   {
-  		GraficoDP grafico = new GraficoDP(1);
+  	  GraficoDP grafico = new GraficoDP(1);
 	  grafico.notification("Sit");
 	  System.out.println("Patient should be sitting");
 	  
