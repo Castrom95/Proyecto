@@ -7,6 +7,8 @@ public class MainParaProbar {
 		Timer timer = new Timer();
 		Chronometer chron = new Chronometer();
 		timer.schedule(chron, 1000, 1000);
+		
+		
 	}
 
 }

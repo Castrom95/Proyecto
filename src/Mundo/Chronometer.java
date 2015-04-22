@@ -60,6 +60,13 @@ public class Chronometer extends TimerTask{
     	return tiempo;
 
     }
+    
+    public void restart()
+    {
+    	segundos = 0;
+    	minutos = 0;
+    	horas = 0;
+    }
 	
 	
 	
