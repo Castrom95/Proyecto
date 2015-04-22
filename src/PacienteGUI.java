@@ -26,6 +26,8 @@ public class PacienteGUI extends JPanel implements ActionListener
 	
 	public PacienteGUI()
 	{
+		setLayout(new BorderLayout());
+		
 		bStart 		= new JButton("Start");
     	tfName		= new JTextField(10);
     	tfID		= new JTextField(7);
@@ -99,7 +101,7 @@ public class PacienteGUI extends JPanel implements ActionListener
     	panel1.setBorder(title);
     	panel1.setPreferredSize(new Dimension(400,170));
     	
-    	add(panel1);
+    	add(panel1, BorderLayout.CENTER);
 		setSize(400,150);
 		setVisible(true);
     	
@@ -112,10 +114,7 @@ public class PacienteGUI extends JPanel implements ActionListener
 		
 	}
 	
-	public static void main(String[] args)
-	{
-		new PacienteGUI();
-	}
+
 
 
 	
