@@ -5,6 +5,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
 import Mundo.Hospital;
 
@@ -64,8 +65,6 @@ public class FramePrincipal extends JFrame implements ActionListener
         setSize(1300,720);
         setVisible(true);
         
-        panelSillas = new PanelSillas(this, 2);
-    	add(panelSillas, BorderLayout.NORTH);
         
         panelBotones = new PanelBotones(this);
         add(panelBotones, BorderLayout.SOUTH);
@@ -78,7 +77,8 @@ public class FramePrincipal extends JFrame implements ActionListener
     	System.out.println("entra acrear");
     	panelSillas = new PanelSillas(this, numero);
     	add(panelSillas, BorderLayout.NORTH);
-    	repaint();
+    	SwingUtilities.updateComponentTreeUI(this);
+    	
     }
     
  
