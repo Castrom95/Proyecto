@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 
-public class PacienteGUI extends JFrame implements ActionListener
+public class PacienteGUI extends JPanel implements ActionListener
 {
 	private JPanel panel1, panel2, panel3, panel4, panel5, panel6, pConcentracion;
 	private JButton bStart;
@@ -60,7 +60,7 @@ public class PacienteGUI extends JFrame implements ActionListener
 		pConcentracion.setLayout(new GridLayout(8,2));
 		
 		TitledBorder title;
-		title = BorderFactory.createTitledBorder("Chair #" );
+		title = BorderFactory.createTitledBorder("Chair # ");
 		
 		panel2.add(new JLabel("Name"));
     	panel2.add(tfName);

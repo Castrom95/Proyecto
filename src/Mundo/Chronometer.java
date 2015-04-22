@@ -11,7 +11,11 @@ public class Chronometer extends TimerTask{
 	private int minutos;
 	private int horas;
 	
+	//Nivel de azucar
+	private double azucar;
 	
+	
+	private Procedimiento procedimiento;
 	
 	
 	
@@ -58,7 +62,6 @@ public class Chronometer extends TimerTask{
     	String tiempo = hora+":"+mins+":"+secs;
     	
     	return tiempo;
-
     }
     
     public void restart()
@@ -74,6 +77,30 @@ public class Chronometer extends TimerTask{
 	public void run() 
 	{		
 		increaseTime();
+		
+		if(getTime() == "00:00:00")
+		{
+			procedimiento.inicioProceso(getTime());
+		}
+		else
+			if(getTime() == "00:00:15")
+			{
+				procedimiento.inicioIV(getTime());
+				procedimiento.inicioProceso(getTime());
+			}
+			else
+				if(getTime() == "00:00:30")
+				{
+					procedimiento.mideMetabolismo(getTime());
+					azucar = procedimiento.mideAzucar(getTime());
+					
+					while(azucar <= 150)
+					{
+						azucar = procedimiento.mideAzucar(getTime());
+					}
+					procedimiento.iniciaBomba(getTime());
+				}
+	
 		System.out.println("Tiempo: " + getTime());		
 	}
 
